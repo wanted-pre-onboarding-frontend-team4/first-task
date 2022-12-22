@@ -49,7 +49,8 @@ const MakeTodo = ({ fetchAndSetTodo }) => {
             if (inputRef.current !== null) {
               inputRef.current.focus();
             }
-          }}>
+          }}
+        >
           저장
         </button>
       </BoxStyle>
