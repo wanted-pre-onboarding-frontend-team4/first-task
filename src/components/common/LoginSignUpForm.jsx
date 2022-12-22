@@ -5,6 +5,15 @@ import styled from 'styled-components';
 const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
   const [btnDisabled, setBtnDisabled] = useState(true);
 
+  //input에 onChange가 일어날 때 마다 input 상태 업데이트
+  const handleInputValue = (e) => {
+    const { name, value } = e.target;
+    setInput({
+      ...input,
+      [name]: value,
+    });
+  };
+
   useEffect(() => {
     // 이메일 유효성 검사
     const emailRegex =
