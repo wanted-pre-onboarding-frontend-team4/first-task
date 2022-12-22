@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { BASE_URL } from '../constants/url';
 
 const apiClient = axios.create({
   baseURL: process.env.REACT_BASE_URL,
