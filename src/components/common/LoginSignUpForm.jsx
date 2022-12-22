@@ -37,6 +37,14 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
           value={input.pwInput}
           onChange={handleInputValue}
         />
+        {title === "회원가입" && (
+          <input
+            name="pwCheck"
+            placeholder="비밀번호 확인 (8자 이상)"
+            value={input.pwCheck}
+            onChange={handleInputValue}
+          />
+        )}
       </div>
       <div className="btn-box">
         <button onClick={btnClick} disabled={btnDisabled}>
