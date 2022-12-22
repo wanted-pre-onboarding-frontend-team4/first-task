@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,11 +8,11 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
   // input이 변할때마다 useEffect가 일어나서 유효성검사 실시
   useEffect(() => {
     const emailValid = input.emailInput.includes('@');
-    const pwValid = input.pwInput.length >= 8 ? true : false;
+    const pwValid = input.pwInput.length >= 8;
     emailValid && pwValid ? setBtnDisabled(false) : setBtnDisabled(true);
   }, [input]);
 
-  //input에 onChange가 일어날 때 마다 input 상태 업데이트
+  // input에 onChange가 일어날 때 마다 input 상태 업데이트
   const handleInputValue = (e) => {
     const { name, value } = e.target;
     setInput({
@@ -48,7 +47,7 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
         )}
       </div>
       <div className='btn-box'>
-        <button onClick={btnClick} disabled={btnDisabled}>
+        <button onClick={btnClick} disabled={btnDisabled} type='submit'>
           {title === '로그인' ? '로그인하기' : '회원가입하기'}
         </button>
       </div>

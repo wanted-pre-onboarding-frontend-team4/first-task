@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import EmptyList from '../components/unit/todo/EmptyList';
 import ListItem from '../components/unit/todo/ListItem';
 import MakeTodo from '../components/unit/todo/MakeToDo';
-import Title from '../components/common/Title'; /* eslint-disable */
+import Title from '../components/common/Title';
 
 const ToDo = () => {
   const navigate = useNavigate();
