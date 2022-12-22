@@ -11,6 +11,8 @@
     "react/react-in-jsx-scope": "off",
     "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
     "no-alert": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-unused-expressions": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   }
 }
