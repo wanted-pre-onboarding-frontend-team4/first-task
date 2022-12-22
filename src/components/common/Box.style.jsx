@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const BoxStyle = ({ bgColor, className, children }) => {
   return (
@@ -11,15 +11,15 @@ const BoxStyle = ({ bgColor, className, children }) => {
 const BoxContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  position: ${(props) => props.className === "make-to-do" && "absolute"};
-  bottom: ${(props) => props.className === "make-to-do" && "0px"};
+  position: ${(props) => props.className === 'make-to-do' && 'absolute'};
+  bottom: ${(props) => props.className === 'make-to-do' && '0px'};
   width: inherit;
   height: ${(props) => props.theme.size.listHeight};
   background-color: ${(props) => props.color};
   border-bottom: ${(props) =>
-    props.className === "list-item" && `1px solid ${props.theme.color.main}`};
+    props.className === 'list-item' && `1px solid ${props.theme.color.main}`};
   color: ${(props) => props.theme.color.txt};
-  font-size: ${(props) => props.className === "title" && "30px"};
+  font-size: ${(props) => props.className === 'title' && '30px'};
   .icon {
     margin: 0 9px 0 18.8px;
     color: ${(props) => props.theme.color.main};
