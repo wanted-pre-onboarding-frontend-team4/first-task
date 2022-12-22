@@ -1,5 +1,11 @@
+import Title from '../components/common/Title';
+
 const ToDo = () => {
-  return <>sd</>;
+  return (
+    <>
+      <Title />
+    </>
+  );
 };
 
 export default ToDo;
