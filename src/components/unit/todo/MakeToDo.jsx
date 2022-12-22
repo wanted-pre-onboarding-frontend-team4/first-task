@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLemon } from '@fortawesome/free-solid-svg-icons';
 import BoxStyle from '../../common/Box.style';
 import theme from '../../../styles/theme';
+import { createTodoApi } from '../../../apis/todo';
 
-const MakeTodo = ({ listArr, setListArr }) => {
+const MakeTodo = ({ fetchAndSetTodo }) => {
   const [inputToDo, setInputToDo] = useState('');
   const inputRef = useRef(null);
 
@@ -13,11 +14,9 @@ const MakeTodo = ({ listArr, setListArr }) => {
     setInputToDo(e.target.value);
   }
 
-  const clickSaveBtn = () => {
-    //   todo: inputToDo,
-    const res = 'sfsf';
-    const { id, isCompleted, todo, userId } = res;
-    setListArr([...listArr, { id, isCompleted, todo, userId }]);
+  const clickSaveBtn = async () => {
+    await createTodoApi({ todo: inputToDo });
+    fetchAndSetTodo();
     setInputToDo('');
   };
 
@@ -44,7 +43,8 @@ const MakeTodo = ({ listArr, setListArr }) => {
           onClick={() => {
             clickSaveBtn();
             if (inputRef.current !== null) inputRef.current.focus();
-          }}>
+          }}
+        >
           저장
         </button>
       </BoxStyle>

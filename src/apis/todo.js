@@ -1,23 +1,28 @@
 import { apiClient } from './auth';
+import setHeaderToken from '../util/auth';
 
 const createTodoApi = async (body) => {
-  const { resStatus } = await apiClient.post('/todos', body);
-  return resStatus;
+  setHeaderToken();
+  const { data } = await apiClient.post('/todos', body);
+  return data;
 };
 
 const getTodoApi = async () => {
-  const { todoList } = await apiClient.get('/todos');
-  return todoList;
+  setHeaderToken();
+  const { data } = await apiClient.get('/todos');
+  return data;
 };
 
 const updateTodoApi = async (body, id) => {
-  const { resStatus } = await apiClient.put(`/todos/${id}`, body);
-  return resStatus;
+  setHeaderToken();
+  const { data } = await apiClient.put(`/todos/${id}`, body);
+  return data;
 };
 
 const deleteTodoApi = async (id) => {
-  const { resStatus } = await apiClient.delete(`/todos/${id}`);
-  return resStatus;
+  setHeaderToken();
+  const { data } = await apiClient.delete(`/todos/${id}`);
+  return data;
 };
 
 export { createTodoApi, getTodoApi, updateTodoApi, deleteTodoApi };

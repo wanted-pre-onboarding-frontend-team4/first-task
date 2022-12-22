@@ -5,18 +5,31 @@ import EmptyList from '../components/unit/todo/EmptyList';
 import ListItem from '../components/unit/todo/ListItem';
 import MakeTodo from '../components/unit/todo/MakeToDo';
 import Title from '../components/common/Title';
+import { getTodoApi } from '../apis/todo';
 
 const ToDo = () => {
   const navigate = useNavigate();
   const [listArr, setListArr] = useState([]);
+
+  const fetchAndSetTodo = async () => {
+    try {
+      const res = await getTodoApi();
+      setListArr([...res]);
+    } catch (error) {
+      alert(`Todo fetch 에러 :  ${error.response.data.message}`);
+    }
+  };
+
   useEffect(() => {
     if (!localStorage.getItem('token')) {
       alert('로그인이 필요한 기능입니다.');
       navigate('/');
     }
-  }, [navigate]);
+  }, [localStorage.getItem('token')]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchAndSetTodo();
+  }, []);
 
   return (
     <>
@@ -27,11 +40,17 @@ const ToDo = () => {
           {!!listArr.length &&
             listArr.map((list) => {
               return (
-                <ListItem key={list.id} list={list} listArr={listArr} setListArr={setListArr} />
+                <ListItem
+                  key={list.id}
+                  list={list}
+                  listArr={listArr}
+                  setListArr={setListArr}
+                  fetchAndSetTodo={fetchAndSetTodo}
+                />
               );
             })}
         </ListContainer>
-        <MakeTodo listArr={listArr} setListArr={setListArr} />
+        <MakeTodo listArr={listArr} setListArr={setListArr} fetchAndSetTodo={fetchAndSetTodo} />
       </TodoContainer>
     </>
   );

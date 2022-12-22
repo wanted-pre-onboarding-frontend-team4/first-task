@@ -1,11 +1,13 @@
+/* eslint-disable */
 import { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import BoxStyle from '../../common/Box.style';
+import { deleteTodoApi, updateTodoApi } from '../../../apis/todo';
 
-const ListItem = ({ list, listArr, setListArr }) => {
+const ListItem = ({ list, fetchAndSetTodo }) => {
   const { id, todo, isCompleted } = list;
   const [checked, setChecked] = useState(isCompleted);
   const [input, setInput] = useState(todo);
@@ -17,53 +19,38 @@ const ListItem = ({ list, listArr, setListArr }) => {
     if (inputRef.current !== null) inputRef.current.focus();
   }, [isModifying]);
 
-  const clickCheckBox = () => {
-    if (!isModifying) {
-      checked ? setChecked(false) : setChecked(true);
-      fetch(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          todo: input,
-          isCompleted: !checked,
-        }),
-      }).then((res) => res.json());
-    }
-  };
-
   const handleInput = (e) => {
     setModifyingInput(e.target.value);
   };
 
-  const clickModifySubmitBtn = () => {
-    fetch(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
-      method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        todo: modifyingInput,
-        isCompleted: false,
-      }),
-    }).then((res) => res.json());
+  const clickCheckBox = async () => {
+    if (!isModifying) {
+      checked ? setChecked(false) : setChecked(true);
+      try {
+        await updateTodoApi({ todo: input, isCompleted: !checked }, id);
+        fetchAndSetTodo();
+      } catch (error) {
+        alert(`체크박스 에러 :  ${error.response.data.message}`);
+      }
+    }
   };
 
-  const clickDeleteBtn = () => {
-    fetch(`https://pre-onboarding-selection-task.shop/todos/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    }).then(() => {
-      const newListArr = listArr.filter((li) => {
-        return li.id !== id;
-      });
-      setListArr(newListArr);
-    });
+  const clickModifySubmitBtn = async () => {
+    try {
+      await updateTodoApi({ todo: modifyingInput, isCompleted: false }, id);
+      fetchAndSetTodo();
+    } catch (error) {
+      alert(`todo 수정 에러 :  ${error.response.data.message}`);
+    }
+  };
+
+  const clickDeleteBtn = async () => {
+    try {
+      await deleteTodoApi(id);
+      fetchAndSetTodo();
+    } catch (error) {
+      alert(`todo 삭제 에러 :  ${error.response.data.message}`);
+    }
   };
 
   return (
@@ -93,7 +80,8 @@ const ListItem = ({ list, listArr, setListArr }) => {
                 onClick={() => {
                   setModifyingInput(input);
                   setIsModifying(false);
-                }}>
+                }}
+              >
                 취소
               </button>
               <button
@@ -103,7 +91,8 @@ const ListItem = ({ list, listArr, setListArr }) => {
                   clickModifySubmitBtn();
                   setInput(modifyingInput);
                   setIsModifying(false);
-                }}>
+                }}
+              >
                 제출
               </button>
             </>
