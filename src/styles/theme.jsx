@@ -1,5 +1,5 @@
 const theme = {
-  /* eslint-disable */ basicWidth: '370px',
+  basicWidth: '370px',
   color: {
     main: '#FAEBA0',
     mainBg: '#fffbe9',
@@ -13,4 +13,4 @@ const theme = {
   },
 };
 
-export { theme };
+export default { theme };
