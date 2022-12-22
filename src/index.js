@@ -2,11 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router";
 import reportWebVitals from "./reportWebVitals";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router />
+    <ThemeProvider theme={theme}>
+      <Router />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
