@@ -1,5 +1,6 @@
 import { useState } from "react";
 import LoginSignUpForm from "../components/common/LoginSignUpForm";
+import Title from "../components/common/Title";
 
 const SignUp = () => {
   const [input, setInput] = useState({
@@ -11,12 +12,15 @@ const SignUp = () => {
   const clickSignUpBtn = () => {};
 
   return (
-    <LoginSignUpForm
-      title="회원가입"
-      input={input}
-      setInput={setInput}
-      btnClick={clickSignUpBtn}
-    />
+    <>
+      <Title />
+      <LoginSignUpForm
+        title="회원가입"
+        input={input}
+        setInput={setInput}
+        btnClick={clickSignUpBtn}
+      />
+    </>
   );
 };
 

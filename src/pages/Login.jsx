@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Title from "../components/common/Title";
 import LoginSignUpForm from "../components/common/LoginSignUpForm";
 
 const Login = () => {
@@ -7,12 +8,15 @@ const Login = () => {
   const clickLoginBtn = () => {};
 
   return (
-    <LoginSignUpForm
-      title="로그인"
-      input={input}
-      setInput={setInput}
-      btnClick={clickLoginBtn}
-    />
+    <>
+      <Title />
+      <LoginSignUpForm
+        title="로그인"
+        input={input}
+        setInput={setInput}
+        btnClick={clickLoginBtn}
+      />
+    </>
   );
 };
 
