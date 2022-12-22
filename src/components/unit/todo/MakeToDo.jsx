@@ -15,6 +15,10 @@ const MakeTodo = ({ fetchAndSetTodo }) => {
   }
 
   const clickSaveBtn = async () => {
+    if (!inputRef.current.value) {
+      alert('할 일을 입력해주세요');
+      return;
+    }
     await createTodoApi({ todo: inputToDo });
     fetchAndSetTodo();
     setInputToDo('');
@@ -43,8 +47,7 @@ const MakeTodo = ({ fetchAndSetTodo }) => {
           onClick={() => {
             clickSaveBtn();
             if (inputRef.current !== null) inputRef.current.focus();
-          }}
-        >
+          }}>
           저장
         </button>
       </BoxStyle>
