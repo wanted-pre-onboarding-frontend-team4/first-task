@@ -32,6 +32,7 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
           onChange={handleInputValue}
         />
         <input
+          type='password'
           name='pwInput'
           placeholder='비밀번호를 입력하세요. (8자 이상)'
           value={input.pwInput}
