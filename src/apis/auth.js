@@ -6,12 +6,12 @@ const apiClient = axios.create({
 });
 
 const signUp = async (body) => {
-  const resStatus = await apiClient.post('/auth/signup', body);
+  const { resStatus } = await apiClient.post('/auth/signup', body);
   return resStatus;
 };
 
 const signIn = async (body) => {
-  const resStatus = await apiClient.post('/auth/signIn', body);
+  const { resStatus } = await apiClient.post('/auth/signIn', body);
   return resStatus;
 };
 
