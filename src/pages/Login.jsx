@@ -1,5 +1,5 @@
-const Login = () => {
-  return;
-};
+function Login() {
+  return <>sdf</>;
+}
 
 export default Login;
