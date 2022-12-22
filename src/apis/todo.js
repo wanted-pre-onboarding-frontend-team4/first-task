@@ -1,8 +1,4 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-  baseURL: process.env.REACT_BASE_URL,
-});
+import { apiClient } from './auth';
 
 const createTodoApi = async (body) => {
   const { resStatus } = await apiClient.post('/todos', body);
