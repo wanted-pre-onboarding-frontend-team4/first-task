@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Router from './Router';
-import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
+import Router from './Router';
 import { theme } from './styles/theme';
 import GlobalStyle from './styles/global-styles';
 

@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+/* eslint-disable */
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  //input이 변할때마다 useEffect가 일어나서 유효성검사 실시
+  // input이 변할때마다 useEffect가 일어나서 유효성검사 실시
   useEffect(() => {
-    const emailValid = input.emailInput.includes("@");
+    const emailValid = input.emailInput.includes('@');
     const pwValid = input.pwInput.length >= 8 ? true : false;
     emailValid && pwValid ? setBtnDisabled(false) : setBtnDisabled(true);
   }, [input]);
@@ -23,36 +24,36 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
 
   return (
     <FormContainer>
-      <h1 className="title">{title}</h1>
-      <div className="input-box">
+      <h1 className='title'>{title}</h1>
+      <div className='input-box'>
         <input
-          name="emailInput"
-          placeholder="이메일을 입력하세요. (@포함)"
+          name='emailInput'
+          placeholder='이메일을 입력하세요. (@포함)'
           value={input.emailInput}
           onChange={handleInputValue}
         />
         <input
-          name="pwInput"
-          placeholder="비밀번호를 입력하세요. (8자 이상)"
+          name='pwInput'
+          placeholder='비밀번호를 입력하세요. (8자 이상)'
           value={input.pwInput}
           onChange={handleInputValue}
         />
-        {title === "회원가입" && (
+        {title === '회원가입' && (
           <input
-            name="pwCheck"
-            placeholder="비밀번호 확인 (8자 이상)"
+            name='pwCheck'
+            placeholder='비밀번호 확인 (8자 이상)'
             value={input.pwCheck}
             onChange={handleInputValue}
           />
         )}
       </div>
-      <div className="btn-box">
+      <div className='btn-box'>
         <button onClick={btnClick} disabled={btnDisabled}>
-          {title === "로그인" ? "로그인하기" : "회원가입하기"}
+          {title === '로그인' ? '로그인하기' : '회원가입하기'}
         </button>
       </div>
-      <Link className="link" to={title === "로그인" ? "/signup" : "/"}>
-        {title === "로그인" ? "회원가입" : "로그인"}
+      <Link className='link' to={title === '로그인' ? '/signup' : '/'}>
+        {title === '로그인' ? '회원가입' : '로그인'}
       </Link>
     </FormContainer>
   );

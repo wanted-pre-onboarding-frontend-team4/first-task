@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: process.env.REACT_BASE_URL,
+  baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 const signUpApi = async (body) => {
@@ -9,9 +9,9 @@ const signUpApi = async (body) => {
   return data;
 };
 
-const signInApi = async (body) => {
+const logInApi = async (body) => {
   const { data } = await apiClient.post('/auth/signIn', body);
   return data;
 };
 
-export { apiClient, signInApi, signUpApi };
+export { apiClient, logInApi, signUpApi };
