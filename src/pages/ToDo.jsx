@@ -17,6 +17,7 @@ const ToDo = () => {
       setListArr([...res]);
     } catch (error) {
       alert(`Todo fetch 에러 :  ${error.response.data.message}`);
+      if (error.response.status === 401) navigate('/');
     }
   };
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Title from '../components/common/Title';
 import LoginSignUpForm from '../components/common/LoginSignUpForm';
 import { logInApi } from '../apis/auth';
-import setHeaderToken from '../util/auth';
+// import setHeaderToken from '../util/auth';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,7 +21,6 @@ const Login = () => {
       const res = await logInApi(body);
       const accessToken = res.access_token;
       localStorage.setItem('token', accessToken);
-      setHeaderToken();
       alert(`로그인되었습니다`);
       navigate('/todo');
     } catch (error) {
