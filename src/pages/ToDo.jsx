@@ -28,7 +28,9 @@ const ToDo = () => {
   }, [localStorage.getItem('token')]);
 
   useEffect(() => {
-    fetchAndSetTodo();
+    if (localStorage.getItem('token')) {
+      fetchAndSetTodo();
+    }
   }, []);
 
   return (
