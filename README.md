@@ -1,5 +1,6 @@
 # 원티드 프리온보딩 프론트엔드 4팀 - first task
 
+
 > 원티드 프리온보딩 선발과제 (Todo List) 리팩토링
 >
 > 기간 : 2022년 12월 20일 ~ 2022년 12월 23일
@@ -8,13 +9,13 @@
 
 ## 📖 목차
 
-- [팀원명](#💪팀원명)
-- [배포링크](#📌배포링크)
-- [협업과정](#😊협업과정)
-- [팀 코드 컨벤션](#💡팀-코드-컨벤션)
-- [폴더구조](#📁폴더구조)
-- [Best Practice 및 채택 근거](#✅Best-Practice-및-채택-근거)
-- [사용기술](#🛠사용기술)
+- [팀원명](#팀원명)
+- [배포링크](#배포링크)
+- [협업과정](#협업과정)
+- [팀 코드 컨벤션](#팀-코드-컨벤션)
+- [폴더구조](#폴더구조)
+- [Best Practice 및 채택 근거](#best-practice-및-채택-근거)
+- [사용기술](#사용기술)
 
 <br />
 
@@ -31,17 +32,15 @@
 <br />
 
 ## 📌배포링크
-
 https://first-task-4team.vercel.app/
 
 <br />
 
 ## 😊협업과정
 
-본 프로젝트는 하나의 결과물을 내기 위해 동료학습을 중점으로 하여 진행하였습니다. 각자 자신이 구현한 코드에 대해 **'어떠한 목적을 갖고 해당 방식을 선택하여 기능을 구현하였는가'**의 설명과 **팀원들이 구현한 코드에 대한 피드백** 및 리팩토링하는 방식으로 Best Practice를 채택하였습니다.
+본 프로젝트는 하나의 결과물을 내기 위해 동료학습을 중점으로 하여 진행하였습니다. 각자 자신이 구현한 코드에 대해 **어떠한 목적을 갖고 해당 방식을 선택하여 기능을 구현하였는가**의 설명과 **팀원들이 구현한 코드에 대한 피드백** 및 리팩토링하는 방식으로 Best Practice를 채택하였습니다.
 
 - Best Pracitce를 찾아가기 전, 최적화된 과정을 찾고자 토론을 통해 아래와 같이 **과제를 나눌 단위**를 지정하였습니다.
-
   1. **UI** : 컴포넌트의 재사용성, 가독성을 고려한 코드인가
   2. **인증 /인가**
   3. TodoList **CRUD**
@@ -54,7 +53,7 @@ https://first-task-4team.vercel.app/
 
 #### 💡팀 코드 컨벤션
 
-- git commit message 컨벤션
+- git commit message  컨벤션
 
 | 커밋 유형        | 의미                                                         |
 | ---------------- | ------------------------------------------------------------ |
@@ -81,7 +80,7 @@ https://first-task-4team.vercel.app/
 #### 1.폴더구조
 
 - **기능별, 관심사별로 폴더를 생성**하여 파일을 분리해두었기에 **전체 프로젝트의 구조와 기능 파악이 쉽기 때문에** 개발 효율성을 향상시킬 수 있습니다.
-- 아래와 같이 api 폴더를 따로 생성해주며 컴포넌트 내에서 api기능이 분리되기 때문에 컴포넌트 자체의 전체적인 기능을 **직관적으로 확인**할 수 있습니다.
+- 아래와 같이 api 폴더를 따로 생성해주며 컴포넌트 내에서 api기능이 분리되기 때문에 컴포넌트 자체의 전체적인 기능을 **직관적으로 확인**할 수 있습니다. 
 
 [링크보기↗](https://github.com/hyejineee/wanted-pre-onboarding-frontend)
 
@@ -89,9 +88,9 @@ https://first-task-4team.vercel.app/
 
 #### 2.UI
 
-- 공통적인 스타일 부분의 **코드 중복을 방지하여 재사용성을 높여줍니다.** 이를 통해 클린코드가 가능해지며 개발 작업시간을 단축할 수 있습니다.
+- 공통적인 스타일 부분의 **코드 중복을 방지하여 재사용성을 높여줍니다.** 이를 통해 클린코드가 가능해지며 개발 작업시간을 단축할 수 있습니다. 
 - 전체적으로 통일된 UI를 제공하여 사용자 측면에서 안정감있는 서비스를 사용한다고 느낄 수 있습니다.
-- 또한, 전체적으로 공통되는 스타일 중 전체 color등을 theme.jsx 로 따로 관리하여 필요할 때마다 props로 불러와 사용할 수 있는 점에 있어 재사용성이 좋습니다.
+- 또한, 전체적으로 공통되는 스타일 중 전체 color등을  theme.jsx 로 따로 관리하여 필요할 때마다 props로 불러와 사용할 수 있는 점에 있어 재사용성이 좋습니다.
 
 [링크 보기↗](https://github.com/YesunPark/wanted-pre-onboarding-frontend)
 
@@ -110,46 +109,68 @@ const BoxStyle = ({ bgColor, className, children }) => {
 #### 3.유효성검사
 
 - 단순한 메서드만 사용한 것이 아닌 정규표현식을 사용하며 추후에 발생할 에러에 대한 방지 또는 유효성 검사 조건이 추가되더라도 원활히 유지보수가 가능합니다.
-- 사전과제가 요구사항으로는 사용자의 불편함을 초래할 수 있으며 보안상의 문제(비밀번호)가 있을 수 있기 때문에 좀 더 구체적인 조건을 추가할 필요성을 충족시켜줍니다.
+- 사전과제가 요구사항으로는 사용자의 불편함을 초래할 수 있으며 보안상의 문제(비밀번호)가 있을 수 있기 때문에  좀 더 구체적인 조건을 추가할 필요성을 충족시켜줍니다.
 
 [링크 보기↗](https://github.com/tnals545/wanted-pre-onboarding-frontend/blob/d58db4fe70272020453956513584e389875e815b/src/pages/LogIn.jsx)
 
 ```jsx
 // 이메일 유효성 검사
-const emailRegex = /([\w-.!#$%&'*+-/=?^_`{|}~]+)@([\w]+\.)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
+// 조건 ( ex - abc123@gmail.com )
+// - 'abc123' : 숫자 또는 영문자 또는 특수문자 사용 가능
+// - '@' : @ 필수
+// - 'gmail' : 영문자 또는 숫자 사용 가능
+// - '.' : . 필수
+// - 'com' : 영문자 2~4개 또는 숫자 1~3개 사용 가능
+const emailRegex = /([\w-.!#$%&'+-/=?^_`{|}~]+)@([\w]+.)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
 
-// 비밀번호 유효성 검사
-const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+// 비밀번호 유효성 검사 ( 숫자, 영문자, 특수문자 조합으로 8자 이상 )
+const pwRegex = /^(?=.[a-zA-Z])(?=.[!@#$%^+=-])(?=.*[0-9]).{8,25}$/;
 ```
 
 <br />
 
+
 #### 4.인증/인가
 
 - 로그인/회원가입 과정에서 에러가 발생해도 프로그램이 종료되지 않도록 try~catch문을 사용해 예외처리를 하여 각 에러 발생시 에러 종류에 따라 효율적으로 대응할 수 있습니다.
-- 에러 핸들링 처리가 없다면 회원가입이 되었는지 알 수 없으며 사용자 입장에서는 불필요한 이유로 계속 회원가입을 시도할 수 있습니다. 또한, auth 관련 api를 한 모듈에 선언해서 import해서 사용하는 방식, 모든 api 요청 함수의 header에 token을 일일이 쓰기보다는 setHeaderToken 함수를 따로 만들어 사용하는 방식, 로그인/회원가입 요청하는 signIn, signUp 함수에 인자 넘겨줄때도 body 변수에 담아서 깔끔하게 처리해주신 부분이 유지보수측면이나 가독성 측면에서 좋다고 생각됩니다.
+- 에러 핸들링 처리가 없다면 회원가입이 되었는지 알 수 없으며 사용자 입장에서는 불필요한 이유로 계속 회원가입을 시도할 수 있습니다. 
+- 또한 auth api를 모듈로 만든후 동일 목적의 api instance를 만들어 baseUrl 등 공통 config를 관리하였고, axios interceptor 를 사용해 api 요청전 토큰 여부에 따른 헤더값 세팅으로 유지보수를 쉽도록 하였습니다.
 
 [링크보기↗](https://github.com/tlsrb100/wanted-pre-onboarding-frontend/blob/355cbd8b0d6ae547b4246e7ac340615394d00ae9/src/components/Auth/InputForm.jsx)
 
-```jsx
-const submitLoginInfoHandler = async (body) => {
-  try {
-    if (selectedButton === '로그인') {
-      const res = await signIn(body);
-      const accessToken = res.data.access_token;
-      localStorage.setItem('accessToken', accessToken);
-      alert(`로그인되었습니다`);
-      navigate('/todo');
-    } else if (selectedButton === '회원가입') {
-      const res = await signUp(body);
-      const accessToken = res.data.access_token;
-      alert(`회원가입되었습니다`);
-      localStorage.setItem('accessToken', accessToken);
+```js
+const apiClient = axios.create({
+  baseURL: process.env.REACT_APP_BASE_URL,
+});
+
+apiClient.interceptors.request.use(
+  (config) => {
+    const accessToken = localStorage.getItem('token');
+    if (accessToken) {
+      config.headers.Authorization = Bearer ${accessToken};
+    } else {
+      delete config.headers.Authorization;
     }
-  } catch (error) {
-    alert(`인증 에러 : ${error.response.data.message}`);
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-};
+);
+```
+
+```js
+const clickLoginBtn = async (body) => {
+    try {
+      const res = await logInApi(body);
+      const accessToken = res.access_token;
+      localStorage.setItem('token', accessToken);
+      alert(로그인되었습니다);
+      navigate('/todo');
+    } catch (error) {
+      alert(인증 에러 : ${error.response.data.message});
+    }
+  };
 ```
 
 <br />
@@ -157,24 +178,24 @@ const submitLoginInfoHandler = async (body) => {
 #### 5.토큰에 따른 리다이렉트
 
 - 단순히 로그인 → TodoList 로 이동이 아닌 주소창에 바로 todolist로 이동할 url 입력할때를 고려했다는 점이 모든 경우의 수를 생각했다는 점에서 사용자 경험 측면을 굉장히 많이 고려하면서 구현한 로직입니다.
-- alert창을 구현하는것은 ux측면에서 꼭 필요한 기능입니다. 왜 “/“창으로 넘어가는지 알 수 없다면 사이트의 오류라고 생각할 수 도 있고 사용자가 불필요한 행동을 반복할 수 있기 때문입니다.
+- alert창을 구현하는것은 ux측면에서 꼭 필요한 기능입니다. 왜 “/“창으로 넘어가는지 알 수 없다면 사이트의 오류라고 생각할 수 도 있고 사용자가 불필요한 행동을 반복할 수 있기 때문입니다. 
 
 [링크보기](https://github.com/YesunPark/wanted-pre-onboarding-frontend/blob/948dbc8f0463c52986ba63cf907175512b092790/src/pages/todo/Todo.jsx)
 
 ```jsx
 useEffect(() => {
-  if (!localStorage.getItem('token')) {
-    alert('로그인이 필요한 기능입니다.');
-    navigate('/');
-  }
-}, [navigate]);
+    if (!localStorage.getItem('token')) {
+      alert('로그인이 필요한 기능입니다.');
+      navigate('/');
+    }
+  }, [navigate]);
 ```
 
 <br />
 
 #### 6.CRUD 로직 분리
 
-- api 모듈화를 통해 반복되는 로직을 분리하기때문에 재사용성이 높아지며, 유지보수가 용이합니다.
+- api 모듈화를 통해 반복되는 로직을 분리하기때문에 재사용성이 높아지며, 유지보수가 용이합니다. 
 - 직관적인 네이밍을 통해 각 함수의 역할에 대해서 이해하기가 쉬우며 이를 바탕으로 다른 개발자들이 보기에, 즉, 협업하기에 명확하여 코드에 대한 이해도를 향상시킵니다.
 - axios instance를 생성하고 재사용해서 반복되는 코드를 줄이고자 하였습니다.
 
@@ -215,12 +236,49 @@ export { createTodo, getTodo, updateTodo, deleteTodo };
 
 <img width="1438" alt="notFound 페이지" src="https://user-images.githubusercontent.com/91598778/209303185-b4b6cab0-a425-4cc7-a0d9-0f3a43a4bd96.png">
 
+<br />
+
 ## 📁폴더구조
+```
+src
+ ┣ apis
+ ┃ ┣ auth.js
+ ┃ ┗ todo.js
+ ┣ components
+ ┃ ┣ common
+ ┃ ┃ ┣ Box.style.jsx
+ ┃ ┃ ┣ LoginSignUpForm.jsx
+ ┃ ┃ ┗ Title.jsx
+ ┃ ┗ unit
+ ┃ ┃ ┗ todo
+ ┃ ┃ ┃ ┣ EmptyList.jsx
+ ┃ ┃ ┃ ┣ ListItem.jsx
+ ┃ ┃ ┃ ┗ MakeToDo.jsx
+ ┣ pages
+ ┃ ┣ Login.jsx
+ ┃ ┣ NotFound.jsx
+ ┃ ┣ SignUp.jsx
+ ┃ ┗ ToDo.jsx
+ ┣ styles
+ ┃ ┣ global-styles.jsx
+ ┃ ┗ theme.jsx
+ ┣ util
+ ┃ ┗ auth.js
+ ┣ index.js
+ ┗ Router.jsx
+```
+
 
 <br />
 
-## 🛠사용기술
-
-`React` `Javascript` `react-router-dom` `styled-components`
+## 🛠사용기술 
+<div align=left>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" >
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" >
+ <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=Vercel&logoColor=white" >
+<br />
+<img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white" >
+<img src="https://img.shields.io/badge/ReactRouter-CA4245?style=for-the-badge&logo=ReactRouter&logoColor=white" >
+ </div>
 
 <br />
