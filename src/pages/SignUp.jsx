@@ -25,7 +25,7 @@ const SignUp = () => {
       const accessToken = res.access_token;
       localStorage.setItem('token', accessToken);
       alert(`회원가입되었습니다`);
-      navigate('/');
+      navigate('/todo');
     } catch (error) {
       alert(`인증 에러 : ${error.response.data.message}`);
     }
