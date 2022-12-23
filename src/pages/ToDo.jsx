@@ -22,15 +22,17 @@ const ToDo = () => {
   };
 
   useEffect(() => {
-    fetchAndSetTodo();
-  }, []);
-
-  useEffect(() => {
     if (!localStorage.getItem('token')) {
       alert('로그인이 필요한 기능입니다.');
       navigate('/');
     }
   }, [localStorage.getItem('token')]);
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      fetchAndSetTodo();
+    }
+  }, []);
 
   return (
     <>
