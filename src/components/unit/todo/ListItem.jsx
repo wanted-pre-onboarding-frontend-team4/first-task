@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import BoxStyle from '../../common/Box.style';
 import { deleteTodoApi, updateTodoApi } from '../../../apis/todo';
 
@@ -14,6 +15,7 @@ const ListItem = ({ list, fetchAndSetTodo }) => {
   const [modifyingInput, setModifyingInput] = useState(todo);
   const [isModifying, setIsModifying] = useState(false);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (inputRef.current !== null) inputRef.current.focus();
@@ -31,6 +33,7 @@ const ListItem = ({ list, fetchAndSetTodo }) => {
         fetchAndSetTodo();
       } catch (error) {
         alert(`체크박스 에러 :  ${error.response.data.message}`);
+        if (error.response.status === 401) navigate('/');
       }
     }
   };
@@ -41,6 +44,7 @@ const ListItem = ({ list, fetchAndSetTodo }) => {
       fetchAndSetTodo();
     } catch (error) {
       alert(`todo 수정 에러 :  ${error.response.data.message}`);
+      if (error.response.status === 401) navigate('/');
     }
   };
 
@@ -50,6 +54,7 @@ const ListItem = ({ list, fetchAndSetTodo }) => {
       fetchAndSetTodo();
     } catch (error) {
       alert(`todo 삭제 에러 :  ${error.response.data.message}`);
+      if (error.response.status === 401) navigate('/');
     }
   };
 

@@ -1,12 +1,15 @@
+/* eslint-disable */
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLemon } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import BoxStyle from '../../common/Box.style';
 import theme from '../../../styles/theme';
 import { createTodoApi } from '../../../apis/todo';
 
 const MakeTodo = ({ fetchAndSetTodo }) => {
+  const navigate = useNavigate();
   const [inputToDo, setInputToDo] = useState('');
   const inputRef = useRef(null);
 
@@ -19,9 +22,14 @@ const MakeTodo = ({ fetchAndSetTodo }) => {
       alert('할 일을 입력해주세요');
       return;
     }
-    await createTodoApi({ todo: inputToDo });
-    fetchAndSetTodo();
-    setInputToDo('');
+    try {
+      await createTodoApi({ todo: inputToDo });
+      fetchAndSetTodo();
+      setInputToDo('');
+    } catch (error) {
+      alert(`Todo make 에러 :  ${error.response.data.message}`);
+      if (error.response.status === 401) navigate('/');
+    }
   };
 
   return (
@@ -47,7 +55,8 @@ const MakeTodo = ({ fetchAndSetTodo }) => {
           onClick={() => {
             clickSaveBtn();
             if (inputRef.current !== null) inputRef.current.focus();
-          }}>
+          }}
+        >
           저장
         </button>
       </BoxStyle>
