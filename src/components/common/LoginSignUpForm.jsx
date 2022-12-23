@@ -38,22 +38,24 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
       <div className='input-box'>
         <input
           name='emailInput'
-          placeholder='이메일을 입력하세요. (@포함)'
+          placeholder='이메일'
           value={input.emailInput}
           onChange={handleInputValue}
         />
         <input
+          className='pw'
           type='password'
           name='pwInput'
-          placeholder='비밀번호를 입력하세요. (8자 이상)'
+          placeholder='비밀번호'
           value={input.pwInput}
           onChange={handleInputValue}
         />
+        <span className='pw-invalid-comment'>영문, 숫자, 특수문자(!@#$%^*+=-) 포함 8자 이상</span>
         {title === '회원가입' && (
           <input
             type='password'
             name='pwCheck'
-            placeholder='비밀번호 확인 (8자 이상)'
+            placeholder='비밀번호 확인'
             value={input.pwCheck}
             onChange={handleInputValue}
           />
@@ -96,6 +98,13 @@ const FormContainer = styled.div`
       input {
         margin-bottom: 20px;
         padding-left: 8px;
+        &.pw {
+          margin-bottom: 0;
+        }
+      }
+      .pw-invalid-comment {
+        margin: 10px 40px 10px 0;
+        font-size: 10px;
       }
     }
     &.btn-box {
