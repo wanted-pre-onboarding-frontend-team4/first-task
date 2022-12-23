@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  //input에 onChange가 일어날 때 마다 input 상태 업데이트
+  // input에 onChange가 일어날 때 마다 input 상태 업데이트
   const handleInputValue = (e) => {
     const { name, value } = e.target;
     setInput({
@@ -16,8 +16,7 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
 
   useEffect(() => {
     // 이메일 유효성 검사
-    const emailRegex =
-      /([\w-.!#$%&'*+-/=?^_`{|}~]+)@([\w]+\.)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
+    const emailRegex = /([\w-.!#$%&'*+-/=?^_`{|}~]+)@([\w]+\.)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
     const emailValid = emailRegex.test(input.emailInput);
     // 비밀번호 유효성 검사
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -25,13 +24,11 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
     // 비밀번호 확인 유효성 검사
     const pwCheckValid = input.pwInput === input.pwCheck;
 
-    if (title === "로그인") {
+    if (title === '로그인') {
       emailValid && pwValid ? setBtnDisabled(false) : setBtnDisabled(true);
     }
-    if (title === "회원가입") {
-      emailValid && pwValid && pwCheckValid
-        ? setBtnDisabled(false)
-        : setBtnDisabled(true);
+    if (title === '회원가입') {
+      emailValid && pwValid && pwCheckValid ? setBtnDisabled(false) : setBtnDisabled(true);
     }
   }, [input, title]);
 
