@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signUpApi } from '../apis/auth';
 import LoginSignUpForm from '../components/common/LoginSignUpForm';
 import Title from '../components/common/Title';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [input, setInput] = useState({
     emailInput: '',
     pwInput: '',
@@ -14,8 +16,9 @@ const SignUp = () => {
     try {
       const res = await signUpApi(body);
       const accessToken = res.access_token;
-      alert(`회원가입되었습니다`);
       localStorage.setItem('token', accessToken);
+      alert(`회원가입되었습니다`);
+      navigate('/');
     } catch (error) {
       alert(`인증 에러 : ${error.response.data.message}`);
     }
