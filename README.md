@@ -258,8 +258,7 @@ export { createTodo, getTodo, updateTodo, deleteTodo };
 - ux적으로 사용자가 주소를 잘못 입력했을 때 해당페이지를 보여줌으로서 뒤로가기 혹은 주소 수정을 유도해 해당 페이지를 벗어날 수 있도록 해주는 작업이 필요하다고 생각합니다. 또한, 사용자의 편의성을 위해서 꼭 필요하지만 주니어가 놓치기 쉬운 부분을 잘 캐치해서 구현해주셨습니다.
 - 유효하지않은 경로 접근시 not found 페이지를 보여주는것이 사용자에게 피드백을 주는것이기 때문에 사용자 경험측면에서 좋은방법이 생각합니다. 또한, 404 페이지를 만듦으로써 프로젝트의 완성도를 높일 수 있습니다.
 
-=> not found 페이지 캡쳐해서 넣으면 될 듯
-
+<img width="1438" alt="notFound 페이지" src="https://user-images.githubusercontent.com/91598778/209303185-b4b6cab0-a425-4cc7-a0d9-0f3a43a4bd96.png">
 
 
 
