@@ -5,13 +5,6 @@ import styled from 'styled-components';
 const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  // input이 변할때마다 useEffect가 일어나서 유효성검사 실시
-  useEffect(() => {
-    const emailValid = input.emailInput.includes('@');
-    const pwValid = input.pwInput.length >= 8;
-    emailValid && pwValid ? setBtnDisabled(false) : setBtnDisabled(true);
-  }, [input]);
-
   // input에 onChange가 일어날 때 마다 input 상태 업데이트
   const handleInputValue = (e) => {
     const { name, value } = e.target;
@@ -20,6 +13,24 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    // 이메일 유효성 검사
+    const emailRegex = /([\w-.!#$%&'*+-/=?^_`{|}~]+)@([\w]+\.)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
+    const emailValid = emailRegex.test(input.emailInput);
+    // 비밀번호 유효성 검사
+    const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+    const pwValid = pwRegex.test(input.pwInput);
+    // 비밀번호 확인 유효성 검사
+    const pwCheckValid = input.pwInput === input.pwCheck;
+
+    if (title === '로그인') {
+      emailValid && pwValid ? setBtnDisabled(false) : setBtnDisabled(true);
+    }
+    if (title === '회원가입') {
+      emailValid && pwValid && pwCheckValid ? setBtnDisabled(false) : setBtnDisabled(true);
+    }
+  }, [input, title]);
 
   return (
     <FormContainer>
@@ -32,6 +43,7 @@ const LoginSignUpForm = ({ title, input, setInput, btnClick }) => {
           onChange={handleInputValue}
         />
         <input
+          type='password'
           name='pwInput'
           placeholder='비밀번호를 입력하세요. (8자 이상)'
           value={input.pwInput}
