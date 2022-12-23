@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUpApi } from '../apis/auth';
 import LoginSignUpForm from '../components/common/LoginSignUpForm';
@@ -11,6 +11,13 @@ const SignUp = () => {
     pwInput: '',
     pwCheck: '',
   });
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      alert('이미 로그인하셨습니다. 투두리스트로 이동합니다.');
+      navigate('/todo');
+    }
+  }, []);
 
   const clickSignUpBtn = async (body) => {
     try {
