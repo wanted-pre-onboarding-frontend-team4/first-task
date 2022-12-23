@@ -142,9 +142,11 @@ const BoxStyle = ({ bgColor, className, children }) => {
 [링크 보기↗](https://github.com/tnals545/wanted-pre-onboarding-frontend/blob/d58db4fe70272020453956513584e389875e815b/src/pages/LogIn.jsx)
 
 ```jsx
-const emailRegex =
-    /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-const passwordRegex = /.{8}/g;
+// 이메일 유효성 검사
+const emailRegex = /([\w-.!#$%&'*+-/=?^_`{|}~]+)@([\w]+\.)([a-zA-Z]{2,4}|[0-9]{1,3})$/;
+
+// 비밀번호 유효성 검사
+const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 ```
 
 <br />
