@@ -80,8 +80,7 @@ const ListItem = ({ list, fetchAndSetTodo }) => {
                 onClick={() => {
                   setModifyingInput(input);
                   setIsModifying(false);
-                }}
-              >
+                }}>
                 취소
               </button>
               <button
@@ -91,8 +90,7 @@ const ListItem = ({ list, fetchAndSetTodo }) => {
                   clickModifySubmitBtn();
                   setInput(modifyingInput);
                   setIsModifying(false);
-                }}
-              >
+                }}>
                 제출
               </button>
             </>

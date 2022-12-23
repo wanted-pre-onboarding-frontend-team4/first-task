@@ -46,7 +46,9 @@ const MakeTodo = ({ fetchAndSetTodo }) => {
           type='submit'
           onClick={() => {
             clickSaveBtn();
-            if (inputRef.current !== null) inputRef.current.focus();
+            if (inputRef.current !== null) {
+              inputRef.current.focus();
+            }
           }}>
           저장
         </button>
